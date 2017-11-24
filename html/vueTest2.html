@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-resource.js"></script>
+</head>
+<body>
+    <div id="box">
+        <!--<span @dblclick="add()">添加</span>-->
+        <!--<ul>-->
+            <!--<li v-for="value in arr">-->
+                <!--{{value}}-->
+            <!--</li>-->
+        <!--</ul>-->
+        <input type="button" value="结果" @click="get()"/>
+    </div>
+
+
+<script>
+    new Vue({
+        el:"#box",
+        data:{ //数据
+            arr:['apple','banana','orange','pear'],
+            json:{a:'apple',b:'banana',c:'orange'}
+        },
+        methods:{
+            add:function(){
+                this.arr.push("tomato");
+            },
+            get:function() {
+                this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',{
+                    wd:'a'
+                },{
+                    jsonp:'cb'
+                }).then(function(res){
+                    alert(res.data.s);
+                },function(){});
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-resource.js"></script>
+    <style>
+        .red{
+            color:red;
+        }
+        .blue{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li :class="{red:true,blue:true}" :style="yangshi">women</li>
+        </ul>
+    </div>
+
+
+<script>
+    new Vue({
+        el:"#box",
+        data:{ //数据
+            arr:['apple','banana','orange','pear'],
+            json:{a:'apple',b:'banana',c:'orange'},
+            jsonColor:{red:true,blue:true},
+            yangshi:{fontSize:'50px',fontWeight:'bold'}
+        },
+        methods:{
+            add:function(){
+                this.arr.push("tomato");
+            },
+            get:function() {
+                this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',{
+                    wd:'a'
+                },{
+                    jsonp:'cb'
+                }).then(function(res){
+                    alert(res.data.s);
+                },function(){});
+            }
+        }
+    });
+</script>
+</body>
+</html>

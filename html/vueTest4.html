@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <!--<input type="text" @keyup.left="show()"/>-->
+        <input type="button" @click="show()" value="按钮"/><!-- 阻止默认事件 -->
+
+    </div>
+
+
+<script>
+    new Vue({
+        el: "#box",
+        data: {
+            name: "ding"
+        },
+        methods: {
+            show(){
+                alert(1);
+            }
+        }
+    });
+</script>
+</body>
+</html>
